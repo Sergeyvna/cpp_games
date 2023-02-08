@@ -34,16 +34,6 @@ int main()
 	spriteTree.setTexture(textureTree);
 	spriteTree.setPosition(810, -100);
 
-	// adding ant
-	Texture textureAnt;
-	textureAnt.loadFromFile("graphics/bee.png");
-	Sprite spriteAnt;
-	spriteAnt.setTexture(textureAnt);
-	spriteAnt.setPosition(0, 800);
-
-	bool antMove = false;
-	float antSpeed = 0.0f;
-
 
 	// adding clouds
 	Texture textureCloud;
@@ -125,8 +115,9 @@ int main()
 	playerTexture.loadFromFile("graphics/player.png");
 	Sprite spritePlayer;
 	spritePlayer.setTexture(playerTexture);
-	spritePlayer.setPosition(580, 600);
-	spritePlayer.setScale(1.3f, 1.3f);
+	spritePlayer.setPosition(700, 720);
+	spritePlayer.setOrigin((Vector2f)playerTexture.getSize() / 2.f);
+	spritePlayer.setScale(-1.3f, 1.3f);
 	side playerSide = side::LEFT;
 
 	// player dead
@@ -134,7 +125,7 @@ int main()
 	deadTexture.loadFromFile("graphics/rip.png");
 	Sprite spriteDead;
 	spriteDead.setTexture(deadTexture);
-	spriteDead.setPosition(600, 870);
+	spriteDead.setPosition(2000, 870);
 
 	// player axe
 	Texture textureAxe;
@@ -206,7 +197,8 @@ int main()
 			}
 
 			spriteDead.setPosition(675, 2000);
-			//spritePlayer.setPosition(580, 720);
+			spritePlayer.setPosition(700, 720);
+			timeBar.setPosition((1920 / 2) - timeBarW / 2, 980);
 
 			acceptInput = true;
 		}
@@ -220,7 +212,9 @@ int main()
 				timeRemain += (2 / score) + .15;
 				spriteAxe.setPosition(AXE_RIGHT, spriteAxe.getPosition().y);
 
-				spritePlayer.setPosition(1100, 600);
+				spritePlayer.setPosition(1200, 720);
+				spritePlayer.setScale(1.3f, 1.3f);
+				
 				updateBranches(score);
 				spriteLog.setPosition(810, 720);
 				logSpeedX = -5000;
@@ -237,8 +231,9 @@ int main()
 				score++;
 				timeRemain += (2 / score) + .15;
 				spriteAxe.setPosition(AXE_LEFT, spriteAxe.getPosition().y);
+				spritePlayer.setScale(-1.3f, 1.3f);
 
-				spritePlayer.setPosition(580, 600);
+				spritePlayer.setPosition(700, 720);
 				updateBranches(score);
 				spriteLog.setPosition(810, 720);
 				logSpeedX = 5000;
@@ -273,8 +268,6 @@ int main()
 		
 		window.draw(spriteDead);
 
-		window.draw(spriteAnt);
-
 		window.draw(scoreTxt);
 
 		window.draw(timeBar);
@@ -294,6 +287,7 @@ int main()
 			timeRemain -= dt.asSeconds();
 			timeBar.setSize(Vector2f(timeBarShrink * timeRemain, timeBarH));
 
+
 			
 			if (timeRemain <= 0.0f)
 			{
@@ -306,29 +300,6 @@ int main()
 
 				oot.play();
 
-			}
-			
-
-
-			// ant movement
-			if (!antMove)
-			{
-				srand((int)time(0));
-				antSpeed = (rand() % 200) + 200;
-
-				srand((int)time(0) * 10);
-				float height = (rand() & 500) + 500;
-				spriteAnt.setPosition(2000, height);
-				antMove = true;
-			}
-			else
-			{
-				spriteAnt.setPosition(spriteAnt.getPosition().x - (antSpeed * dt.asSeconds()), spriteAnt.getPosition().y);
-
-				if (spriteAnt.getPosition().x < -100)
-				{
-					antMove = false;
-				}
 			}
 
 			// cloud movement
@@ -367,7 +338,7 @@ int main()
 			// set branch
 			for (int i = 0; i < NUM_BRANCHES; i++)
 			{
-				float height = i * 120;
+				float height = i * 150;
 				if (branchPos[i] == side::LEFT)
 				{
 					branches[i].setPosition(610, height);
@@ -403,6 +374,11 @@ int main()
 				spriteDead.setPosition(spritePlayer.getPosition().x, 760);
 				spritePlayer.setPosition(2000, 660);
 				txt.setString("YOU DIED");
+				FloatRect textRect = txt.getLocalBounds();
+
+				txt.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+				txt.setPosition(1920 / 2.0f, 1000);
+				timeBar.setPosition(2000, 300);
 
 				death.play();
 
