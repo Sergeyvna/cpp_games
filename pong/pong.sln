@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "game_1", "game_1.vcxproj", "{0A956DFF-6434-4529-9870-C5DA8DCA3144}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pong", "..\pong\pong.vcxproj", "{5C27C52F-9CD8-4E49-8FBE-E04156DC4B2D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pong", "pong.vcxproj", "{5C27C52F-9CD8-4E49-8FBE-E04156DC4B2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,14 +13,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0A956DFF-6434-4529-9870-C5DA8DCA3144}.Debug|x64.ActiveCfg = Debug|x64
-		{0A956DFF-6434-4529-9870-C5DA8DCA3144}.Debug|x64.Build.0 = Debug|x64
-		{0A956DFF-6434-4529-9870-C5DA8DCA3144}.Debug|x86.ActiveCfg = Debug|Win32
-		{0A956DFF-6434-4529-9870-C5DA8DCA3144}.Debug|x86.Build.0 = Debug|Win32
-		{0A956DFF-6434-4529-9870-C5DA8DCA3144}.Release|x64.ActiveCfg = Release|x64
-		{0A956DFF-6434-4529-9870-C5DA8DCA3144}.Release|x64.Build.0 = Release|x64
-		{0A956DFF-6434-4529-9870-C5DA8DCA3144}.Release|x86.ActiveCfg = Release|Win32
-		{0A956DFF-6434-4529-9870-C5DA8DCA3144}.Release|x86.Build.0 = Release|Win32
 		{5C27C52F-9CD8-4E49-8FBE-E04156DC4B2D}.Debug|x64.ActiveCfg = Debug|x64
 		{5C27C52F-9CD8-4E49-8FBE-E04156DC4B2D}.Debug|x64.Build.0 = Debug|x64
 		{5C27C52F-9CD8-4E49-8FBE-E04156DC4B2D}.Debug|x86.ActiveCfg = Debug|Win32
@@ -36,6 +26,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {AA96B87E-8892-4CBC-9CE1-5178C2B58667}
+		SolutionGuid = {0999AA01-1F4F-4226-A7B2-717D6068C404}
 	EndGlobalSection
 EndGlobal
